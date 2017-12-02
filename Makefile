@@ -1,4 +1,4 @@
-PKG_NAME:=github.com/sapcc/mosquitto-exporter
+PKG_NAME:=github.com/QuailAutomation/mosquitto-exporter
 BUILD_DIR:=bin
 MOSQUITTO_EXPORTER_BINARY:=$(BUILD_DIR)/mosquitto_exporter
 IMAGE := craigham/rpi-mosquitto-exporter
