@@ -13,7 +13,7 @@ ADD . /src
 RUN cd /src
 WORKDIR /src
 RUN go get -d -v
-RUN  go build -o mosquitto_exporter 
+RUN  CGO_ENABLED=0 GOARCH=arm GOOS=linux go build -s -w  -o mosquitto_exporter 
 
 # final stage
 FROM alpine
