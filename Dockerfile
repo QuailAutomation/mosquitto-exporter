@@ -8,9 +8,12 @@
 
 
 # build stage
-FROM arm32v7/golang AS build-env
+FROM arm32v7/golang:1.9.2 AS build-env
 ADD . /src
-RUN cd /src && go build -o mosquitto_exporter -ldflags="-s -w" $(PKG_NAME)
+RUN cd /src
+WORKDIR /src
+RUN go get -d -v
+RUN  go build -o mosquitto_exporter 
 
 # final stage
 FROM alpine
@@ -19,4 +22,4 @@ COPY --from=build-env /src/mosquitto_exporter /app/
 
 EXPOSE 9324
 
-ENTRYPOINT ./mosquitto_exporter
+#ENTRYPOINT ./mosquitto_exporter
