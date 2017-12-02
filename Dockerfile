@@ -10,7 +10,7 @@
 # build stage
 FROM arm32v7/golang AS build-env
 ADD . /src
-RUN cd /src && make build
+RUN cd /src && go build -o mosquitto_exporter -ldflags="-s -w" $(PKG_NAME)
 
 # final stage
 FROM alpine
