@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  exporter:
+    image: 'craigham/rpi-mosquitto-exporter:latest'
+    restart: always
+    environment:
+      BROKER_ENDPOINT: "tcp://192.168.1.126:1883"
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - '/etc/timezone:/etc/timezone:ro'
+    ports:
+      - "9234:9234"
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+

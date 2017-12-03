@@ -22,4 +22,4 @@ COPY --from=build-env /src/mosquitto_exporter /app/
 
 EXPOSE 9324
 
-#ENTRYPOINT ./mosquitto_exporter
+ENTRYPOINT ./mosquitto_exporter
